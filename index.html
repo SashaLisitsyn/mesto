@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+  <link rel="stylesheet" href="pages/index.css">
+</head>
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img src="images/Logo.svg" alt="Лого" class="header__logo">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__main">
+          <img src="images/Avatar.jpg" alt="Аватарка" class="profile__avatar">
+          <div class="profile__info">
+            <div class="profile__name-button">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button" type="button"></button>
+            </div>
+            <p class="profile__famous">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="profile__add-buttom" type="button"></button>
+      </section>
+      <div class="popup">
+        <div class="popup__container">
+          <button type="button" class="popup__close"></button>
+          <h2 class="popup__edit">Редактировать профиль</h2>
+          <form class="popup__form" name="form">
+          <input type="text" name="name" class="popup__input popup__input_text_name">
+          <input type="text" name="famous" class="popup__input popup__input_text_famous">
+          <button type="submit" class="popup__save">Сохранить</button>
+          </form>
+        </div>
+      </div>
+      <section class="elements">
+          <article class="element">
+            <img src="images/1.jpg" alt="Пикча" class="element__photo">
+            <div class="element__name-like">
+            <h2 class="element__name">Карачаевск</h2>
+            <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
+            </div>
+          </article>
+          <article class="element">
+            <img src="images/2.jpg" alt="Пикча" class="element__photo">
+            <div class="element__name-like">
+              <h2 class="element__name">Гора Эльбрус</h2>
+              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
+              </div>
+          </article>
+          <article class="element">
+            <img src="images/3.jpg" alt="Пикча" class="element__photo">
+            <div class="element__name-like">
+              <h2 class="element__name">Домбай</h2>
+              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
+              </div>
+          </article>
+          <article class="element">
+            <img src="images/4.jpg" alt="Пикча" class="element__photo">
+            <div class="element__name-like">
+              <h2 class="element__name">Гора Эльбрус</h2>
+              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
+              </div>
+          </article>
+          <article class="element">
+            <img src="images/5.jpg" alt="Пикча" class="element__photo">
+            <div class="element__name-like">
+              <h2 class="element__name">Домбай</h2>
+              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
+              </div>
+          </article>
+          <article class="element">
+            <img src="images/6.jpg" alt="Пикча" class="element__photo">
+            <div class="element__name-like">
+              <h2 class="element__name">Карачаево-Черкесия</h2>
+              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
+              </div>
+          </article>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
+  </div>
+  <script src="js/index.js"></script>
+</body>
+</html>
