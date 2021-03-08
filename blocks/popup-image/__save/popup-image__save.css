@@ -1,0 +1,34 @@
+.popup-image__save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 358px;
+  height: 50px;
+  margin: 0;
+  margin-top: 48px;
+  margin-left: 36px;
+  margin-bottom: 37px;
+  background-color: #000;
+  cursor: pointer;
+  transition: opacity 0.5s linear 0.1s;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.popup-image__save:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 880px) {
+  .popup-image__save {
+    margin-top: 45px;
+    margin-left: 22px;
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
