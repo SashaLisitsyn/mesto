@@ -1,7 +1,9 @@
 .element {
+  position: relative;
   max-width: 282px;
   border-radius: 10px;
   background-color: #ffffff;
+  z-index: 1;
 }
 
 @media screen and (max-width: 650px) {

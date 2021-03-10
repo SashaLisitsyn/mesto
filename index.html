@@ -48,55 +48,29 @@
         </div>
       </div>
       <section class="elements">
-          <article class="element">
-            <img src="images/1.jpg" alt="Пикча" class="element__photo">
-            <div class="element__name-like">
-            <h2 class="element__name">Карачаевск</h2>
-            <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img src="images/2.jpg" alt="Пикча" class="element__photo">
-            <div class="element__name-like">
-              <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
-              </div>
-          </article>
-          <article class="element">
-            <img src="images/3.jpg" alt="Пикча" class="element__photo">
-            <div class="element__name-like">
-              <h2 class="element__name">Домбай</h2>
-              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
-              </div>
-          </article>
-          <article class="element">
-            <img src="images/4.jpg" alt="Пикча" class="element__photo">
-            <div class="element__name-like">
-              <h2 class="element__name">Гора Эльбрус</h2>
-              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
-              </div>
-          </article>
-          <article class="element">
-            <img src="images/5.jpg" alt="Пикча" class="element__photo">
-            <div class="element__name-like">
-              <h2 class="element__name">Домбай</h2>
-              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
-              </div>
-          </article>
-          <article class="element">
-            <img src="images/6.jpg" alt="Пикча" class="element__photo">
-            <div class="element__name-like">
-              <h2 class="element__name">Карачаево-Черкесия</h2>
-              <button class="element__button" type="button"><img src="images/Like.svg" alt="Пикча" class="element__like"></button>
-              </div>
-          </article>
       </section>
+      <div class="element-popup">
+        <div class="element-popup__container">
+          <button type="button" class="element-popup__close"></button>
+          <img src=" " alt="Пикча" class="element-popup__img">
+          <h2 class="element-popup__name"></h2>
+        </div>
+      </div>
     </main>
     <footer class="footer">
-      <p class="footer__copyright">© 2020 Mesto Russia</p>
+      <p class="footer__copyright">© 2021 Mesto Russia</p>
     </footer>
   </div>
+  <template class="template-element">
+    <article class="element">
+      <button class="element__delete" type="submit"></button>
+      <img src=" " alt="Пикча" class="element__photo">
+      <div class="element__name-like">
+       <h2 class="element__name"></h2>
+       <button class="element__like" type="button"></button>
+      </div>
+    </article>
+  </template>
   <script src="js/index.js"></script>
-  <script src="js/index1.js"></script>
 </body>
 </html>

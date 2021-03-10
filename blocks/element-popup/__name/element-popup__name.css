@@ -1,0 +1,16 @@
+.element-popup__name {
+  position: absolute;
+  left: 0;
+  bottom: -30px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+
+  color: #ffffff;
+}
+
+@media screen and (max-width: 880px) {
+  .element-popup__name {
+    bottom: -35px;
+  }
+}
