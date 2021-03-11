@@ -7,7 +7,7 @@ const profileName = document.querySelector('.profile__name');
 const profileFamous = document.querySelector('.profile__famous');
 
 const popupEditName = document.querySelector('.popup__input.popup__input_edit_name');
-const popupEditFamous = document.querySelector('.popup__input.popup__input__edit_famous');
+const popupEditFamous = document.querySelector('.popup__input.popup__input_edit_famous');
 
 const formSavePopupEdit = document.querySelector('.popup__form_edit');
 
