@@ -25,38 +25,38 @@
         </div>
         <button class="profile__add-buttom" type="button"></button>
       </section>
-      <div class="popup">
-        <div class="popup__container">
-          <button type="button" class="popup__close"></button>
-          <h2 class="popup__edit">Редактировать профиль</h2>
-          <form class="popup__form" name="form">
-          <input type="text" name="name" class="popup__input popup__input_text_name">
-          <input type="text" name="famous" class="popup__input popup__input_text_famous">
-          <button type="submit" class="popup__save">Сохранить</button>
-          </form>
-        </div>
-      </div>
-      <div class="popup-image">
-        <div class="popup-image__container">
-          <button type="button" class="popup-image__close"></button>
-          <h2 class="popup-image__new-place">Новое место</h2>
-          <form class="popup-image__form" name="form">
-            <input type="text" name="name" class="popup-image__input popup-image__input_text_name" placeholder="Название">
-            <input type="text" name="link" class="popup-image__input popup-image__input_text_link" placeholder="Ссылка на картинку">
-            <button type="submit" class="popup-image__save">Создать</button>
-          </form>
-        </div>
-      </div>
       <section class="elements">
       </section>
-      <div class="element-popup">
-        <div class="element-popup__container">
-          <button type="button" class="element-popup__close"></button>
-          <img src="" alt="Пикча" class="element-popup__img">
-          <h2 class="element-popup__name"></h2>
-        </div>
-      </div>
     </main>
+    <div class="popup popup_type_edit">
+      <div class="popup__content">
+        <button type="button" class="popup__close popup__close_type"></button>
+        <h2 class="popup__edit">Редактировать профиль</h2>
+        <form class="popup__form popup__form_edit" name="form">
+          <input type="text" name="name" class="popup__input popup__input_edit_name">
+          <input type="text" name="famous" class="popup__input popup__input__edit_famous">
+        <button type="submit" class="popup__save popup__save_edit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_new-card">
+      <div class="popup__content">
+        <button type="button" class="popup__close popup__close_new-card"></button>
+        <h2 class="popup__edit">Новое место</h2>
+        <form class="popup__form popup__form-new-card" name="form">
+          <input type="text" name="name" class="popup__input popup__input_new-card_name" placeholder="Название">
+          <input type="text" name="link" class="popup__input popup__input_new-card_link" placeholder="Ссылка на картинку">
+          <button type="submit" class="popup__save popup__save_new-card">Создать</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_image">
+      <div class="popup__content-image">
+        <button type="button" class="popup__close popup__close_image"></button>
+        <img src="" alt="Пикча" class="popup__image">
+        <h2 class="popup__caption"></h2>
+    </div>
+  </div>
     <footer class="footer">
       <p class="footer__copyright">© 2021 Mesto Russia</p>
     </footer>
