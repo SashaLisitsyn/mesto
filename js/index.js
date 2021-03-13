@@ -1,32 +1,23 @@
-const popupEdit = document.querySelector('.popup_type_edit');
+//Олег, здравствуйте! Благодарю Вас за то, что указали на многие ошибки и заставили сделать рефакторинг кода. С помощью этого написанный код хорошо уложился в моей голове и многие вещи сталы мне ясны и понятны. У меня к Вам будет несколько просьб. Во-первых, объясните, пожалуйста, МАКСИМАЛЬНО подробно, как сделать так, чтобы все попапы с помощью одной функции открывались, а с помощью второй все попапы закрывались. Во-вторых, я почему-то не могу очистить формы после создания карточек (хотя reset к форме применял); помогите, пожалуйста, решить данную проблему. В-третьих, будьте добры дать мне дополнительную итерацию и дополнительный день для написания кода (я бы хотел максиально детально разобраться в возникших у меня проблемах и, если что, к Вам обратиться). 
 
-const showPopupEditButton = document.querySelector('.profile__edit-button');
-const closePopupEditButton = document.querySelector('.popup__close_type');
 
-const profileName = document.querySelector('.profile__name');
-const profileFamous = document.querySelector('.profile__famous');
+// P.S. Проверьте еще раз, пожалуйста, на наличие косяков (вроде бы все исправил за исключением открытия/закрытия попапов и очищения формы).
 
-const popupEditName = document.querySelector('.popup__input.popup__input_edit_name');
-const popupEditFamous = document.querySelector('.popup__input.popup__input_edit_famous');
+// И еще раз огромное спасибо за проделанную Вами работу (:
 
-const formSavePopupEdit = document.querySelector('.popup__form_edit');
 
 const elementsContainer = document.querySelector('.elements');
 const templateElement = document.querySelector('.template-element');
 
-const popupNewCardName = document.querySelector('.popup__input_new-card_name');
-const popupNewCardLink = document.querySelector('.popup__input_new-card_link');
 
-const elementFormPopupNewCard = document.querySelector('.popup__form-new-card');
-
-const popupImage = document.querySelector('.popup_type_image');
-const popupImageName = document.querySelector('.popup__caption');
-const popupImagePhoto = document.querySelector('.popup__image');
-const popupImageClose = document.querySelector('.popup__close_image');
-
-const popupNewCard = document.querySelector('.popup_type_new-card');
-const showPopupNewCardButton = document.querySelector('.profile__add-buttom');
-const closePopupNewCardButton = document.querySelector('.popup__close_new-card');
+const popupEdit = document.querySelector('.popup_type_edit');
+const popupEditName = document.querySelector('.popup__input.popup__input_edit_name');
+const popupEditFamous = document.querySelector('.popup__input.popup__input_edit_famous');
+const showPopupEditButton = document.querySelector('.profile__edit-button');
+const closePopupEditButton = document.querySelector('.popup__close_type');
+const profileName = document.querySelector('.profile__name');
+const profileFamous = document.querySelector('.profile__famous');
+const formSavePopupEdit = document.querySelector('.popup__form_edit');
 
 function showPopupEdit () {
   popupEdit.classList.add('popup_opened');
@@ -51,6 +42,11 @@ function formPopupEdit (evt) {
 
 formSavePopupEdit.addEventListener('submit', formPopupEdit);
 
+
+const popupNewCard = document.querySelector('.popup_type_new-card');
+const showPopupNewCardButton = document.querySelector('.profile__add-buttom');
+const closePopupNewCardButton = document.querySelector('.popup__close_new-card');
+
 function showPopupNewCard () {
   popupNewCard.classList.add('popup_opened');
 };
@@ -63,32 +59,21 @@ function closePopupNewCard () {
 
 closePopupNewCardButton.addEventListener('click', closePopupNewCard);
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
+
+function handleLikeIcon (evt) {
+  evt.target.classList.toggle('element__like_active');
+}
+
+
+function handleDeleteCard (evt) {
+  evt.target.closest('.element').remove();
+}
+
+
+const popupImage = document.querySelector('.popup_type_image');
+const popupImageName = document.querySelector('.popup__caption');
+const popupImagePhoto = document.querySelector('.popup__image');
+const popupImageClose = document.querySelector('.popup__close_image');
 
 function createElement (element) {
   const newElement = templateElement.content.cloneNode(true);
@@ -99,36 +84,24 @@ function createElement (element) {
   const elementLike = newElement.querySelector('.element__like');
   const elementDelete = newElement.querySelector('.element__delete');
 
-  const popupImageButtons = newElement.querySelectorAll('.element__photo');
+  const popupImageButton = newElement.querySelector('.element__photo');
 
   elementName.textContent = element.name;
   elementPhoto.src = element.link;
+  elementPhoto.alt = 'Фото';
 
-  function showElementLike (evt) {
-    evt.target.classList.toggle('element__like_active');
-  }
+  elementLike.addEventListener('click', handleLikeIcon)
 
-  elementLike.addEventListener('click', showElementLike)
-
-  function showDeleteElement (evt) {
-    evt.target.closest('.element').remove();
-  }
-
-  elementDelete.addEventListener('click', showDeleteElement)
+  elementDelete.addEventListener('click', handleDeleteCard)
 
   function showImagePopup (evt) {
     popupImage.classList.add('popup_opened')
-    const popupImageNameStart = evt.target.closest('.element').querySelector('.element__name');
-    const popupImagePhotoStart = evt.target;
-  
-    popupImageName.textContent = popupImageNameStart.textContent;
-    popupImagePhoto.src = popupImagePhotoStart.src;
-    popupImagePhoto.alt = popupImagePhotoStart.alt;
+    popupImageName.textContent = evt.target.alt;
+    popupImagePhoto.src = evt.target.src;
+    popupImagePhoto.alt = evt.target.alt;
   }
 
-  popupImageButtons.forEach (function (img) {
-    img.addEventListener('click', showImagePopup);
-  })
+  popupImageButton.addEventListener('click', showImagePopup);
 
   function closePopupImage () {
     popupImage.classList.remove('popup_opened');
@@ -139,6 +112,7 @@ function createElement (element) {
   return newElement
 }
 
+
 function renderList () {
   const cards = initialCards.map (createElement)
 
@@ -146,6 +120,10 @@ function renderList () {
 }
 
 renderList ()
+
+
+const popupNewCardName = document.querySelector('.popup__input_new-card_name');
+const popupNewCardLink = document.querySelector('.popup__input_new-card_link');
 
 function addNewElement (evt) {
   evt.preventDefault ();
@@ -159,5 +137,8 @@ function addNewElement (evt) {
 
   closePopupNewCard();
 }
+
+
+const elementFormPopupNewCard = document.querySelector('.popup__form-new-card');
 
 elementFormPopupNewCard.addEventListener('submit', addNewElement);
