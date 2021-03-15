@@ -2,18 +2,37 @@ const elementsContainer = document.querySelector('.elements');
 const templateElement = document.querySelector('.template-element');
 const elementFormPopupNewCard = document.querySelector('.popup__form-new-card');
 
-
-function openPopup (popup) {
-  popup.classList.add('popup_opened');
-};
-
-
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupEditName = document.querySelector('.popup__input.popup__input_edit_name');
 const popupEditFamous = document.querySelector('.popup__input.popup__input_edit_famous');
 const showPopupEditButton = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__name');
 const profileFamous = document.querySelector('.profile__famous');
+
+const formSavePopupEdit = document.querySelector('.popup__form_edit');
+
+const showPopupNewCardButton = document.querySelector('.profile__add-buttom');
+const popupNewCard = document.querySelector('.popup_type_new-card');
+
+const popupNewCardName = document.querySelector('.popup__input_new-card_name');
+const popupNewCardLink = document.querySelector('.popup__input_new-card_link');
+
+const popupImageName = document.querySelector('.popup__caption');
+const popupImagePhoto = document.querySelector('.popup__image');
+const popupImage = document.querySelector('.popup_type_image');
+
+const closePopupEditButton = document.querySelector('.popup__close_type');
+const closePopupNewCardButton = document.querySelector('.popup__close_new-card');
+const popupImageClose = document.querySelector('.popup__close_image');
+
+
+function openPopup (popup) {
+  popup.classList.add('popup_opened');
+};
+
+
+showPopupNewCardButton.addEventListener('click', (evt) => {openPopup(popupNewCard)});
+
 
 function showPopupEdit () { 
   popupEditName.value = profileName.textContent; 
@@ -22,8 +41,6 @@ function showPopupEdit () {
 }; 
 
 showPopupEditButton.addEventListener('click', showPopupEdit); 
-
-const formSavePopupEdit = document.querySelector('.popup__form_edit');
 
 function transferFormPopupEdit (evt) {
   evt.preventDefault();
@@ -34,14 +51,6 @@ function transferFormPopupEdit (evt) {
 
 formSavePopupEdit.addEventListener('submit', transferFormPopupEdit);
 
-
-const showPopupNewCardButton = document.querySelector('.profile__add-buttom');
-const popupNewCard = document.querySelector('.popup_type_new-card');
-
-showPopupNewCardButton.addEventListener('click', (evt) => {openPopup(popupNewCard)});
-
-const popupNewCardName = document.querySelector('.popup__input_new-card_name');
-const popupNewCardLink = document.querySelector('.popup__input_new-card_link');
 
 function addNewElement (evt) {
   evt.preventDefault ();
@@ -61,10 +70,6 @@ function addNewElement (evt) {
 elementFormPopupNewCard.addEventListener('submit', addNewElement);
 
 
-const popupImageName = document.querySelector('.popup__caption');
-const popupImagePhoto = document.querySelector('.popup__image');
-const popupImage = document.querySelector('.popup_type_image');
-
 function showImagePopup (evt) {
   popupImageName.textContent = evt.target.alt;
   popupImagePhoto.src = evt.target.src;
@@ -72,10 +77,6 @@ function showImagePopup (evt) {
   openPopup(popupImage);
 };
 
-
-const closePopupEditButton = document.querySelector('.popup__close_type');
-const closePopupNewCardButton = document.querySelector('.popup__close_new-card');
-const popupImageClose = document.querySelector('.popup__close_image');
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
