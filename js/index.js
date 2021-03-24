@@ -25,9 +25,14 @@ const closePopupEditButton = document.querySelector('.popup__close_type');
 const closePopupNewCardButton = document.querySelector('.popup__close_new-card');
 const popupImageClose = document.querySelector('.popup__close_image');
 
+const popupInputsNewCard = Array.from(document.querySelectorAll('.popup__input_new-card'));
+const popupNewCardButton = document.querySelector('.popup__save_new-card')
+
 
 function openPopup (popup) {
   popup.classList.add('popup_opened');
+
+  toggleButtonState(popupInputsNewCard, popupNewCardButton);
 };
 
 
@@ -50,7 +55,6 @@ function transferFormPopupEdit (evt) {
 };
 
 formSavePopupEdit.addEventListener('submit', transferFormPopupEdit);
-
 
 function addNewElement (evt) {
   evt.preventDefault ();
@@ -76,6 +80,31 @@ function showImagePopup (evt) {
   popupImagePhoto.alt = evt.target.alt;
   openPopup(popupImage);
 };
+
+
+function closePopupOverlay () {
+  const popupList = Array.from(document.querySelectorAll('.popup'));
+  
+  popupList.forEach(popupElement => {
+    const overlayElement = popupElement.querySelector('.popup__overlay');
+    overlayElement.addEventListener('click', (evt) => {closePopup(popupElement)})
+  })
+}
+
+closePopupOverlay ()
+
+
+function closePopupEsc (evt) {
+  if (evt.key === 'Escape') {
+    const popupList = Array.from(document.querySelectorAll('.popup'));
+
+    popupList.forEach(popupElement => {
+      closePopup(popupElement)
+    })
+  }
+}
+
+document.body.addEventListener ('keydown', closePopupEsc)
 
 
 function closePopup (popup) {

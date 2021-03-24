@@ -22,12 +22,18 @@
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/__content-image/popup__content-image.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_error/popup__input_error.css);
 @import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/popup/__save/_invalid/popup__save_invalid.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/__edit/popup__edit.css);
+@import url(../blocks/popup/__overlay/popup__overlay.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+
+@import url(../blocks/popup/__span-error/popup__span-error.css);
+@import url(../blocks/popup/__span-error/_visible/popup__span-error_visible.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
