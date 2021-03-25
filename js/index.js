@@ -32,7 +32,7 @@ const popupNewCardButton = document.querySelector('.popup__save_new-card')
 function openPopup (popup) {
   popup.classList.add('popup_opened');
 
-  toggleButtonState(popupInputsNewCard, popupNewCardButton);
+  document.addEventListener('keydown', closePopupEsc)
 };
 
 
@@ -96,19 +96,16 @@ closePopupOverlay ()
 
 function closePopupEsc (evt) {
   if (evt.key === 'Escape') {
-    const popupList = Array.from(document.querySelectorAll('.popup'));
-
-    popupList.forEach(popupElement => {
-      closePopup(popupElement)
-    })
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup)
   }
 }
-
-document.body.addEventListener ('keydown', closePopupEsc)
 
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+
+  document.removeEventListener('keydown', closePopupEsc);
 };
 
 closePopupEditButton.addEventListener('click', (evt) => {closePopup (popupEdit)});
