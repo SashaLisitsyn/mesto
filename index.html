@@ -48,11 +48,11 @@
         <button type="button" class="popup__close popup__close_new-card"></button>
         <h2 class="popup__edit">Новое место</h2>
         <form class="popup__form popup__form-new-card" name="form" novalidate>
-          <input type="text" id="new-card-name" name="name" class="popup__input popup__input_new-card popup__input_new-card_name" placeholder="Название" minlength="2" maxlength="30" required>
+          <input type="text" id="new-card-name" name="name" class="popup__input popup__input_new-card_name" placeholder="Название" minlength="2" maxlength="30" required>
           <span id="new-card-name-error" class="popup__span-error"></span>
-          <input type="url" id="new-card-link" name="link" class="popup__input popup__input_new-card popup__input_new-card_link" placeholder="Ссылка на картинку" required>
+          <input type="url" id="new-card-link" name="link" class="popup__input popup__input_new-card_link" placeholder="Ссылка на картинку" required>
           <span id="new-card-link-error" class="popup__span-error"></span>
-          <button type="submit" class="popup__save popup__save_new-card">Создать</button>
+          <button type="submit" class="popup__save">Создать</button>
         </form>
       </div>
     </div>
@@ -78,7 +78,6 @@
       </div>
     </article>
   </template>
-  <script src="js/initial-сards.js"></script>
-  <script src="js/Card.js"></script>
+  <script type="module" src="js/index.js"></script>
 </body>
 </html>

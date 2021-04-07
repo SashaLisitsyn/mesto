@@ -1,8 +1,24 @@
-class Card {
+import { closePopupEsc } from './index.js'
+
+export class Card {
   constructor (data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+  };
+
+
+  generateCard() {
+    this._element = this._getTemplate();
+    
+    this._handleLikeIconEventListeners();
+    this._handleDeleteCardEventListeners();
+    this._showImagePopupEventListeners();
+
+    this._element.querySelector('.element__name').textContent = this._name;
+    this._element.querySelector('.element__photo').src = this._link;
+
+    return this._element;
   };
 
 
@@ -14,18 +30,6 @@ class Card {
     .cloneNode(true);
 
     return templateElement;
-  };
-
-
-  renderList() {
-    this._element = this._getTemplate();
-    this._handleLikeIconEventListeners();
-    this._handleDeleteCardEventListeners();
-
-    this._element.querySelector('.element__name').textContent = this._name;
-    this._element.querySelector('.element__photo').src = this._link;
-
-    return this._element;
   };
 
 
@@ -42,6 +46,7 @@ class Card {
 
   _handleDeleteCard() {
     this._element.querySelector('.element__delete').closest('.element').remove();
+    this._element = null;
   };
 
   _handleDeleteCardEventListeners() {
@@ -49,13 +54,28 @@ class Card {
       this._handleDeleteCard();
     });
   };
+
+
+  _showImagePopup() {
+    const popupImageName = document.querySelector('.popup__caption');
+    const popupImagePhoto = document.querySelector('.popup__image');
+    const popupImage = document.querySelector('.popup_type_image');
+
+    function openPopup () {
+      popupImage.classList.add('popup_opened');
+
+      document.addEventListener('keydown', closePopupEsc)
+    }
+    openPopup()
+
+    popupImageName.textContent = this._name;
+    popupImagePhoto.src = this._link;
+    popupImagePhoto.alt = this._name;
+  }
+
+  _showImagePopupEventListeners() {
+    this._element.querySelector('.element__photo').addEventListener('click', () => {
+      this._showImagePopup()
+    })
+  }
 };
-
-
-initialCards.forEach((element) => {
-  const card = new Card(element, '.template-element_type_default');
-  const cardElement = card.renderList();
-  const elementsContainer = document.querySelector('.elements');
-
-  elementsContainer.prepend(cardElement);
-});
