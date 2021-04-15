@@ -1,31 +1,6 @@
-import { Card } from './Card.js'
-import { FormValidator } from './FormValidator.js'
+import { cardsList, validatorList } from '../utils/utils.js'
 
-import { initialCards } from './initial-сards.js'
-
-
-const elementFormPopupNewCard = document.querySelector('.popup__form-new-card');
-
-const popupEdit = document.querySelector('.popup_type_edit');
-const popupEditName = document.querySelector('.popup__input.popup__input_edit_name');
-const popupEditFamous = document.querySelector('.popup__input.popup__input_edit_famous');
-const popupEditButton = document.querySelector('.profile__edit-button');
-const profileName = document.querySelector('.profile__name');
-const profileFamous = document.querySelector('.profile__famous');
-
-const formSavePopupEdit = document.querySelector('.popup__form_edit');
-
-const popupNewCardButton = document.querySelector('.profile__add-buttom');
-const popupNewCard = document.querySelector('.popup_type_new-card');
-
-const popupNewCardName = document.querySelector('.popup__input_new-card_name');
-const popupNewCardLink = document.querySelector('.popup__input_new-card_link');
-
-const popupImage = document.querySelector('.popup_type_image');
-
-const closePopupEditButton = document.querySelector('.popup__close_type');
-const closePopupNewCardButton = document.querySelector('.popup__close_new-card');
-const popupImageClose = document.querySelector('.popup__close_image');
+import { elementFormPopupNewCard, popupEdit, popupEditName, popupEditFamous, popupEditButton, profileName, profileFamous, formSavePopupEdit, popupNewCardButton, popupNewCard, popupNewCardName, popupNewCardLink, popupImage, closePopupEditButton, closePopupNewCardButton, popupImageClose } from '../utils/constants.js'
 
 
 function openPopup (popup) {
@@ -108,26 +83,3 @@ closePopupEditButton.addEventListener('click', (evt) => {closePopup (popupEdit)}
 closePopupNewCardButton.addEventListener('click', (evt) => {closePopup (popupNewCard)});
 
 popupImageClose.addEventListener('click', (evt) => {closePopup (popupImage)});
-
-
-initialCards.forEach((element) => {
-  const card = new Card(element, '.template-element_type_default');
-  const cardElement = card.generateCard();
-  const elementsContainer = document.querySelector('.elements');
-
-  elementsContainer.prepend(cardElement);
-});
-
-
-const someFormElement = document.querySelectorAll('.popup__form');
-
-someFormElement.forEach((formElement) => {
-  const someFormValidator = new FormValidator({
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save',
-    inactiveButtonClass: 'popup__save_invalid',
-    inputErrorClass: 'popup__input_error',
-    errorClass: 'popup__span-error_visible'
-  }, formElement)
-  someFormValidator.enableValidation()
-})
