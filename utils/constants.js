@@ -1,3 +1,5 @@
+export const cardListSection = '.elements';
+
 export const someFormElement = document.querySelectorAll('.popup__form');
 
 export const elementFormPopupNewCard = document.querySelector('.popup__form-new-card');

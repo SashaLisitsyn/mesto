@@ -1,3 +1,5 @@
+import { Card } from '../components/Card.js';
+
 import { cardsList, validatorList } from '../utils/utils.js'
 
 import { elementFormPopupNewCard, popupEdit, popupEditName, popupEditFamous, popupEditButton, profileName, profileFamous, formSavePopupEdit, popupNewCardButton, popupNewCard, popupNewCardName, popupNewCardLink, popupImage, closePopupEditButton, closePopupNewCardButton, popupImageClose } from '../utils/constants.js'
