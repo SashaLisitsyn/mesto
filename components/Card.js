@@ -1,6 +1,7 @@
-import { closePopupEsc } from '../pages/index.js'
+import Popup from './Popup.js';
 
-export class Card {
+
+export default class Card {
   constructor (data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
@@ -61,21 +62,19 @@ export class Card {
     const popupImagePhoto = document.querySelector('.popup__image');
     const popupImage = document.querySelector('.popup_type_image');
 
-    function openPopup () {
-      popupImage.classList.add('popup_opened');
-
-      document.addEventListener('keydown', closePopupEsc)
-    }
-    openPopup()
+    const popup = new Popup({
+      popupSelector: popupImage,
+    });
+    popup.open();
 
     popupImageName.textContent = this._name;
     popupImagePhoto.src = this._link;
     popupImagePhoto.alt = this._name;
-  }
+  };
 
   _showImagePopupEventListeners() {
     this._element.querySelector('.element__photo').addEventListener('click', () => {
-      this._showImagePopup()
-    })
-  }
+      this._showImagePopup();
+    });
+  };
 };
