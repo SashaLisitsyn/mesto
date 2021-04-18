@@ -1,4 +1,4 @@
-import Popup from './Popup.js';
+import PopupWithImage from './PopupWithImage.js';
 
 
 export default class Card {
@@ -56,20 +56,13 @@ export default class Card {
     });
   };
 
-
   _showImagePopup() {
-    const popupImageName = document.querySelector('.popup__caption');
-    const popupImagePhoto = document.querySelector('.popup__image');
     const popupImage = document.querySelector('.popup_type_image');
 
-    const popup = new Popup({
+    const popup = new PopupWithImage({
       popupSelector: popupImage,
     });
-    popup.open();
-
-    popupImageName.textContent = this._name;
-    popupImagePhoto.src = this._link;
-    popupImagePhoto.alt = this._name;
+    popup.open(this._name, this._link);
   };
 
   _showImagePopupEventListeners() {
