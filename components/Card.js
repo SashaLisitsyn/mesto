@@ -57,11 +57,9 @@ export default class Card {
   };
 
   _showImagePopup() {
-    const popupImage = document.querySelector('.popup_type_image');
+    const popupImage = '.popup_type_image';
 
-    const popup = new PopupWithImage({
-      popupSelector: popupImage,
-    });
+    const popup = new PopupWithImage(popupImage);
     popup.open(this._name, this._link);
   };
 
