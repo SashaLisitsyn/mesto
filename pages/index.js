@@ -3,37 +3,40 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 
-import { popupEdit, popupEditName, popupEditFamous, popupEditButton, profileName, profileFamous, formSavePopupEdit, popupNewCardButton, popupNewCard, popupImage, popupImageClose, someFormElement, cardListSection } from '../utils/constants.js';
+import { popupEdit, popupEditName, popupEditFamous, popupEditButton, profileName, profileFamous, popupNewCardButton, popupNewCard, popupImage, popupImageClose, someFormElement, cardListSection } from '../utils/constants.js';
 import { initialCards } from '../utils/initial-сards.js';
 
 
-function showPopupEdit () { 
-  popupEditName.value = profileName.textContent; 
-  popupEditFamous.value = profileFamous.textContent; 
+const userInfo = new UserInfo({
+  userInfoName: profileName,
+  userInfoFamous: profileFamous,
+});
+
+
+const newPopupEdit = new PopupWithForm(popupEdit, (data) => {
+  userInfo.setUserInfo(data);
+
+  newPopupEdit.close();
+});
+
+
+popupEditButton.addEventListener('click', () => {
+  const name = profileName.textContent;
+  const famous = profileFamous.textContent;
+
+  userInfo.getUserInfo(popupEditName.value = name, popupEditFamous.value = famous);
+
   const popup = new Popup(popupEdit);
   popup.open();
-}; 
-
-popupEditButton.addEventListener('click', showPopupEdit); 
+}); 
 
 
 popupNewCardButton.addEventListener('click', (evt) => {
   const popup = new Popup(popupNewCard);
   popup.open();
 });
-
-
-function transferFormPopupEdit (evt) {
-  evt.preventDefault();
-  profileName.textContent = popupEditName.value;
-  profileFamous.textContent = popupEditFamous.value;
-
-  const popup = new Popup(popupEdit);
-  popup.close();
-};
-
-formSavePopupEdit.addEventListener('submit', transferFormPopupEdit);
 
 
 popupImageClose.addEventListener('click', () => {
