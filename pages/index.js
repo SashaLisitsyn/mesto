@@ -3,6 +3,7 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 
 import { popupEdit, popupEditName, popupEditFamous, popupEditButton, profileName, profileFamous, popupNewCardButton, popupNewCard, popupImage, popupImageClose, someFormElement, cardListSection } from '../utils/constants.js';
@@ -33,7 +34,7 @@ popupEditButton.addEventListener('click', () => {
 }); 
 
 
-popupNewCardButton.addEventListener('click', (evt) => {
+popupNewCardButton.addEventListener('click', () => {
   const popup = new Popup(popupNewCard);
   popup.open();
 });
@@ -48,7 +49,12 @@ popupImageClose.addEventListener('click', () => {
 const cardsList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '.template-element_type_default');
+    const card = new Card(item, 
+      '.template-element_type_default',
+      () => {
+        const popup = new PopupWithImage(popupImage);
+        popup.open(item.name, item.link);
+      });
 
     const cardElement = card.generateCard();
 
@@ -60,7 +66,12 @@ cardsList.renderItems();
 
 
 const newCard = new PopupWithForm(popupNewCard, (item) => {
-  const card = new Card(item, '.template-element_type_default');
+  const card = new Card(item, 
+    '.template-element_type_default',
+    () => {
+      const popup = new PopupWithImage(popupImage);
+      popup.open(item.name, item.link);
+    });
 
   const cardElement = card.generateCard();
 
