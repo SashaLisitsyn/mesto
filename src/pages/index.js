@@ -1,3 +1,32 @@
+import './index.css';
+
+import AddButtonMain from '../images/AddButtonMain.svg';
+import AddButtonMobail from '../images/AddButtonMobail.svg';
+import Avatar from '../images/Avatar.jpg';
+import CloseIcon from '../images/CloseIcon.svg';
+import CloseIconMobail from '../images/CloseIconMobail.svg';
+import Delete from '../images/Delete.svg';
+import EditButtonMain from '../images/EditButtonMain.svg';
+import EditButtonMobail from '../images/EditButtonMobail.svg';
+import Like from '../images/Like.svg';
+import LikeActive from '../images/LikeActive.svg';
+import Logo from '../images/Logo.svg';
+
+const images = [
+  { name: 'AddButtonMain', image: AddButtonMain },
+  { name: 'AddButtonMobail', link: AddButtonMobail },
+  { name: 'Avatar', link: Avatar },
+  { name: 'CloseIcon', link: CloseIcon },
+  { name: 'CloseIconMobail', link: CloseIconMobail },
+  { name: 'Delete', link: Delete },
+  { name: 'EditButtonMain', link: EditButtonMain },
+  { name: 'EditButtonMobail', link: EditButtonMobail },
+  { name: 'Like', link: Like },
+  { name: 'LikeActive', link: LikeActive },
+  { name: 'Logo', link: Logo },
+]; 
+
+
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
