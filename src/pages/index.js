@@ -1,31 +1,6 @@
+// Здравствуйте. Исправил все замечания, кроме одного: "Если добавить карточку, а затем снова открыть попап добавления карточки, то кнопка добавления активна, хотя инпуты пусты". Никак не могу сообразить, как этот вопрос решить. Объясните, пожалуйста, максимально подробно, как устранить эту проблему (:
+
 import './index.css';
-
-import AddButtonMain from '../images/AddButtonMain.svg';
-import AddButtonMobail from '../images/AddButtonMobail.svg';
-import Avatar from '../images/Avatar.jpg';
-import CloseIcon from '../images/CloseIcon.svg';
-import CloseIconMobail from '../images/CloseIconMobail.svg';
-import Delete from '../images/Delete.svg';
-import EditButtonMain from '../images/EditButtonMain.svg';
-import EditButtonMobail from '../images/EditButtonMobail.svg';
-import Like from '../images/Like.svg';
-import LikeActive from '../images/LikeActive.svg';
-import Logo from '../images/Logo.svg';
-
-const images = [
-  { name: 'AddButtonMain', image: AddButtonMain },
-  { name: 'AddButtonMobail', link: AddButtonMobail },
-  { name: 'Avatar', link: Avatar },
-  { name: 'CloseIcon', link: CloseIcon },
-  { name: 'CloseIconMobail', link: CloseIconMobail },
-  { name: 'Delete', link: Delete },
-  { name: 'EditButtonMain', link: EditButtonMain },
-  { name: 'EditButtonMobail', link: EditButtonMobail },
-  { name: 'Like', link: Like },
-  { name: 'LikeActive', link: LikeActive },
-  { name: 'Logo', link: Logo },
-]; 
-
 
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -35,7 +10,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 
-import { popupEdit, popupEditName, popupEditFamous, popupEditButton, profileName, profileFamous, popupNewCardButton, popupNewCard, popupImage, popupImageClose, someFormElement, cardListSection } from '../utils/constants.js';
+import { popupEdit, popupEditName, popupEditFamous, popupEditButton, profileName, profileFamous, popupNewCardButton, popupNewCard, popupImage, someFormElement, cardListSection } from '../utils/constants.js';
 import { initialCards } from '../utils/initial-сards.js';
 
 
@@ -52,28 +27,27 @@ const newPopupEdit = new PopupWithForm(popupEdit, (data) => {
 });
 
 
+const popupEditOpen = new Popup(popupEdit);
+
 popupEditButton.addEventListener('click', () => {
-  const name = profileName.textContent;
-  const famous = profileFamous.textContent;
+  const { name, famous } = userInfo.getUserInfo();
 
-  userInfo.getUserInfo(popupEditName.value = name, popupEditFamous.value = famous);
+  popupEditName.value = name;
+  popupEditFamous.value = famous; 
 
-  const popup = new Popup(popupEdit);
-  popup.open();
+  popupEditOpen.open();
 }); 
 
 
+const popupNewCardOpen = new Popup(popupNewCard);
+
 popupNewCardButton.addEventListener('click', () => {
-  const popup = new Popup(popupNewCard);
-  popup.open();
+
+  popupNewCardOpen.open();
 });
 
 
-popupImageClose.addEventListener('click', () => {
-  const popup = new Popup(popupImage);
-  popup.close(); 
-});
-
+const popupImageOpen = new PopupWithImage(popupImage)
 
 const cardsList = new Section({
   items: initialCards,
@@ -81,8 +55,7 @@ const cardsList = new Section({
     const card = new Card(item, 
       '.template-element_type_default',
       () => {
-        const popup = new PopupWithImage(popupImage);
-        popup.open(item.name, item.link);
+        popupImageOpen.open(item.name, item.link);
       });
 
     const cardElement = card.generateCard();
@@ -98,8 +71,7 @@ const newCard = new PopupWithForm(popupNewCard, (item) => {
   const card = new Card(item, 
     '.template-element_type_default',
     () => {
-      const popup = new PopupWithImage(popupImage);
-      popup.open(item.name, item.link);
+      popupImageOpen.open(item.name, item.link);
     });
 
   const cardElement = card.generateCard();

@@ -16,4 +16,3 @@ export const popupNewCardButton = document.querySelector('.profile__add-buttom')
 export const popupNewCard = '.popup_type_new-card';
 
 export const popupImage = '.popup_type_image';
-export const popupImageClose = document.querySelector('.popup__close_image');

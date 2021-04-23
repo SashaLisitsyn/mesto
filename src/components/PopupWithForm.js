@@ -24,7 +24,7 @@ export default class PopupWithForm extends Popup {
   };
 
   close() {
-    this._popupElement.classList.remove('popup_opened');
+    super.close();
     
     this._formElement.reset();
   };

@@ -63,11 +63,11 @@ export default class FormValidator {
     };
   };
 
-  _hasInvalidInput (inputList) {
+  _hasInvalidInput(inputList) {
     return inputList.some(inputElement => !inputElement.validity.valid);
   };
 
-  _allInputsEmpty (inputList) {
+  _allInputsEmpty(inputList) {
     return !inputList.some(inputElement => inputElement.value.length > 0);
   };
 };
