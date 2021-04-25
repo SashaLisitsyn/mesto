@@ -79,25 +79,18 @@ const newCard = new PopupWithForm(popupNewCard, (item) => {
 });
 
 
-const editPopupFormValidator = new FormValidator({
-      inputSelector: '.popup__input',
-      submitButtonSelector: '.popup__save',
-      inactiveButtonClass: 'popup__save_invalid',
-      inputErrorClass: 'popup__input_error',
-      errorClass: 'popup__span-error_visible'
-    }, editPopupForm);
-
-editPopupFormValidator.enableValidation();
-
-const newCardPopupFormValidator = new FormValidator({
+const validationConfig = {
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save',
   inactiveButtonClass: 'popup__save_invalid',
   inputErrorClass: 'popup__input_error',
   errorClass: 'popup__span-error_visible'
-}, newCardPopupForm);
+}
 
+const editPopupFormValidator = new FormValidator(validationConfig, editPopupForm);
+editPopupFormValidator.enableValidation();
+
+const newCardPopupFormValidator = new FormValidator(validationConfig, newCardPopupForm);
 newCardPopupFormValidator.enableValidation();
-
 
 
