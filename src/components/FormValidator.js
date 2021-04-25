@@ -6,6 +6,7 @@ export default class FormValidator {
     this._inputErrorClass = enableObject.inputErrorClass;
     this._errorClass = enableObject.errorClass;
     this._formElement = formElement;
+    this._submitButton = formElement.querySelector(enableObject.submitButtonSelector);
   };
 
 
@@ -70,4 +71,9 @@ export default class FormValidator {
   _allInputsEmpty(inputList) {
     return !inputList.some(inputElement => inputElement.value.length > 0);
   };
+
+  disableSubmitButton() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.setAttribute('disabled', true);
+  }
 };

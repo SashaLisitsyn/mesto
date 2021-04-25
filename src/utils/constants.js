@@ -1,6 +1,7 @@
 export const cardListSection = '.elements';
 
-export const someFormElement = document.querySelectorAll('.popup__form');
+export const editPopupForm = document.querySelector('.popup__form_edit');
+export const newCardPopupForm = document.querySelector('.popup__form-new-card');
 
 export const popupEdit = '.popup_type_edit';
 export const popupEditName = document.querySelector('.popup__input.popup__input_edit_name');
