@@ -20,6 +20,15 @@ export default class Popup {
     document.removeEventListener('keydown', this._handleEscClose); 
   };
 
+  loading(data) {
+    const submitButtom = this._popupElement.querySelector('.popup__save');
+    if (data) {
+      submitButtom.textContent = 'Сохранение...';
+    } else {
+      submitButtom.textContent = 'Сохранить';
+    };
+  };
+
   _handleEscClose(evt) {
     if (evt.key === 'Escape') {
       this.close()

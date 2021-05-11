@@ -13,13 +13,17 @@
     <main class="content">
       <section class="profile">
         <div class="profile__main">
-          <img src="<%=require('./images/Avatar.jpg')%>" alt="Аватарка" class="profile__avatar">
+          <div class="profile__avatar">
+            <div class="profile__avatar_block">
+              <img src="<%=require('./images/AvatarIcon.svg')%>" alt="Иконка" class="profile__avatar_icon">
+            </div>
+          </div>
           <div class="profile__info">
             <div class="profile__name-button">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <h1 class="profile__name"></h1>
               <button class="profile__edit-button" type="button"></button>
             </div>
-            <p class="profile__famous">Исследователь океана</p>
+            <p class="profile__about"></p>
           </div>
         </div>
         <button class="profile__add-buttom" type="button"></button>
@@ -35,8 +39,8 @@
         <form class="popup__form popup__form_edit" name="form" novalidate>
           <input type="text" id="edit-name" name="name" class="popup__input popup__input_edit_name" minlength="2" maxlength="40" required>
           <span id="edit-name-error" class="popup__span-error"></span>
-          <input type="text" id="edit-famous" name="famous" class="popup__input popup__input_edit_famous" minlength="2" maxlength="200" required>
-          <span id="edit-famous-error" class="popup__span-error"></span>
+          <input type="text" id="edit-about" name="about" class="popup__input popup__input_edit_about" minlength="2" maxlength="200" required>
+          <span id="edit-about-error" class="popup__span-error"></span>
         <button type="submit" class="popup__save popup__save_edit">Сохранить</button>
         </form>
       </div>
@@ -61,8 +65,30 @@
         <button type="button" class="popup__close popup__close_image"></button>
         <img src=" " alt="Пикча" class="popup__image">
         <h2 class="popup__caption"></h2>
+      </div>
     </div>
-  </div>
+    <div class="popup popup_type_delete">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button type="button" class="popup__close popup__close_delete"></button>
+        <h2 class="popup__edit">Вы уверены?</h2>
+        <form class="popup__form popup__form-delete" name="form" novalidate>
+          <button type="submit" class="popup__save">Да</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_avatar">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button type="button" class="popup__close popup__close_delete"></button>
+        <h2 class="popup__edit">Обновить аватар</h2>
+        <form class="popup__form popup__form-avatar" name="form" novalidate>
+          <input type="url" id="avatar-link" name="link" class="popup__input popup__input_avatar_link" placeholder="Ссылка на картинку" required>
+          <span id="avatar-link-error" class="popup__span-error"></span>
+          <button type="submit" class="popup__save">Сохранить</button>
+        </form>
+      </div>
+    </div>
     <footer class="footer">
       <p class="footer__copyright">© 2021 Mesto Russia</p>
     </footer>
@@ -72,8 +98,11 @@
       <button class="element__delete" type="submit"></button>
       <img src=" " alt="Пикча" class="element__photo">
       <div class="element__name-like">
-       <h2 class="element__name"></h2>
-       <button class="element__like" type="button"></button>
+        <h2 class="element__name"></h2>
+        <div class="element__likes">
+        <button class="element__like" type="button"></button>
+        <p class="element__quantity-likes"></p>
+        </div>
       </div>
     </article>
   </template>

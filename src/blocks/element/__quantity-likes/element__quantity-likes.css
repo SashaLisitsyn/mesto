@@ -1,0 +1,12 @@
+.element__quantity-likes {
+  margin: 0 auto;
+  margin-top: 3px;
+  font-weight: 400px;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
