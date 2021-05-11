@@ -1,4 +1,4 @@
-.profile__avatar_block {
+.profile__edit-avatar {
   width: 100%;
   height: 100%;
   display: flex;
@@ -12,6 +12,6 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.profile__avatar_block:hover {
+.profile__edit-avatar:hover {
   opacity: 0.5;
 }
