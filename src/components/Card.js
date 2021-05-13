@@ -17,10 +17,10 @@ export default class Card {
 
     this._element.querySelector('.element__name').textContent = this._name;
     this._element.querySelector('.element__photo').src = this._link;
+    this._element.querySelector('.element__photo').alt = this._name;
 
     this._setEventListeners();
     this._showDelete();
-    this._handleLike();
 
     return this._element;
   };
@@ -39,12 +39,6 @@ export default class Card {
 
   isLiked() {
     return this._isLiked;
-  };
-
-  _handleLike() {
-    this._element.querySelector('.element__like').addEventListener('click', () => {
-      this._handleLikeIcon();
-    });
   };
 
   displayQuantityLikes(data) {
@@ -78,6 +72,10 @@ export default class Card {
 
   
   _setEventListeners() {
+    this._element.querySelector('.element__like').addEventListener('click', () => {
+      this._handleLikeIcon();
+    });
+
     this._element.querySelector('.element__delete').addEventListener('click', () => {
       this._handleDeleteCard();
     });

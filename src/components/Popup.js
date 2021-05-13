@@ -3,10 +3,9 @@ export default class Popup {
     this._popupSelector = popupSelector;
     this._popupElement = document.querySelector(popupSelector);
 
-    this.setEventListeners();
-    this._handleOverlayClose();
     this._handleEscClose = this._handleEscClose.bind(this);
   };
+
 
   open() {
     this._popupElement.classList.add('popup_opened');
@@ -20,18 +19,10 @@ export default class Popup {
     document.removeEventListener('keydown', this._handleEscClose); 
   };
 
-  loading(data) {
-    const submitButtom = this._popupElement.querySelector('.popup__save');
-    if (data) {
-      submitButtom.textContent = 'Сохранение...';
-    } else {
-      submitButtom.textContent = 'Сохранить';
-    };
-  };
 
   _handleEscClose(evt) {
     if (evt.key === 'Escape') {
-      this.close()
+      this.close();
     };
   };
 
@@ -42,7 +33,10 @@ export default class Popup {
     });
   };
 
+
   setEventListeners() {
+    this._handleOverlayClose();
+
     const closePopupButton = this._popupElement.querySelector('.popup__close');
     closePopupButton.addEventListener('click', () => {
       this.close();

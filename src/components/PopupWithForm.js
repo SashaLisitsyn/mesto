@@ -1,9 +1,10 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-  constructor({popupSelector, handleFormSubmit}) {
+  constructor({popupSelector, handleFormSubmit}, formName) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
+    this._form = formName;
   };
 
   _getInputValues() {
@@ -15,6 +16,27 @@ export default class PopupWithForm extends Popup {
     return this._formValues;
   };
 
+  close() {
+    super.close();
+    
+    this._formElement.reset();
+  };
+
+  closeReset() {
+    super.close();
+    
+    this._form.reset();
+  }
+
+  renderLoading(data) {
+    const submitButtom = this._popupElement.querySelector('.popup__save');
+    if (data) {
+      submitButtom.textContent = 'Сохранение...';
+    } else {
+      submitButtom.textContent = 'Сохранить';
+    };
+  };
+
   setEventListeners() {
     super.setEventListeners();
     this._formElement = this._popupElement.querySelector('.popup__form');
@@ -22,11 +44,5 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
     });
-  };
-
-  close() {
-    super.close();
-    
-    this._formElement.reset();
   };
 };
