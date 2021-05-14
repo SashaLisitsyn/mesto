@@ -1,10 +1,9 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-  constructor({popupSelector, handleFormSubmit}, formName) {
+  constructor({popupSelector, handleFormSubmit}) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
-    this._form = formName;
   };
 
   _getInputValues() {
@@ -21,12 +20,6 @@ export default class PopupWithForm extends Popup {
     
     this._formElement.reset();
   };
-
-  closeReset() {
-    super.close();
-    
-    this._form.reset();
-  }
 
   renderLoading(data) {
     const submitButtom = this._popupElement.querySelector('.popup__save');

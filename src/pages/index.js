@@ -42,11 +42,17 @@ const popupEditProfile = new PopupWithForm({
   popupSelector: popupEdit, 
   handleFormSubmit: (data) => {
     popupEditProfile.renderLoading(true);
-    api.setUserInfo(data)
+    api.setUserInfo({
+      name: data.name,
+      about: data.about
+    })
       .then((data) => {
-        userInfo.setUserInfo(data);
+        userInfo.setUserInfo({
+          name: data.name,
+          about: data.about
+        });
 
-        popupEditProfile.closeReset();
+        popupEditProfile.close();
       })
       .catch((err) => {
         console.log(`Attention! ${err}`);
@@ -55,7 +61,7 @@ const popupEditProfile = new PopupWithForm({
         popupEditProfile.renderLoading(false);
       });
   }
-}, popupEditForm);
+});
 
 popupEditProfile.setEventListeners();
 
@@ -78,7 +84,7 @@ const popupAddCard = new PopupWithForm({
     api.newCard(item)
       .then((item) => {
         cardList.addItem(createNewCard(item, currentUserId));
-        popupAddCard.closeReset();
+        popupAddCard.close();
       })
       .catch((err) => {
         console.log(`Attention! ${err}`);
@@ -110,9 +116,11 @@ const popupAvatar = new PopupWithForm({
     popupAvatar.renderLoading(true);
     api.newAvatar(data)
       .then((data) => {
-        userInfo.setUserInfo(data);
+        userInfo.setUserInfo({
+          avatar: data.avatar
+        });
         
-        popupAvatar.closeReset();
+        popupAvatar.close();
       })
       .catch((err) => {
         console.log(`Attention! ${err}`);
@@ -189,7 +197,11 @@ function createNewCard (item, currentUserId) {
 
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([userData, cardData]) => {
-    userInfo.setUserInfo(userData);
+    userInfo.setUserInfo({
+      name: userData.name,
+      about: userData.about,
+      avatar: userData.avatar
+    });
 
     currentUserId = userData._id;
 
