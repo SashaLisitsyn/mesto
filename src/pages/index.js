@@ -33,7 +33,7 @@ const userInfo = new UserInfo({
 
 const cardList = new Section({
   renderer: (item) => {
-    cardList.addItem(createNewCard(item, currentUserId));
+    cardList.appendItem(createNewCard(item, currentUserId));
   }
 }, cardListSection);
 
@@ -83,7 +83,7 @@ const popupAddCard = new PopupWithForm({
     popupAddCard.renderLoading(true);
     api.newCard(item)
       .then((item) => {
-        cardList.addItem(createNewCard(item, currentUserId));
+        cardList.prependItem(createNewCard(item, currentUserId));
         popupAddCard.close();
       })
       .catch((err) => {
